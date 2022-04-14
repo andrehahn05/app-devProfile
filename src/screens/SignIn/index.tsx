@@ -1,5 +1,6 @@
 import React from 'react';
 import {ScrollView} from 'react-native';
+import Button from '../../components/Form/Button';
 import Input from '../../components/Form/Input';
 import {Container, Content, Title} from './styles';
 
@@ -15,6 +16,7 @@ const SignIn: React.FC<ISignInProps> = ({}) => {
           <Title>Faça seu logon</Title>
           <Input placeholder="Email" />
           <Input placeholder="Senha" />
+          <Button title="Entrar" />
         </Content>
       </Container>
     </ScrollView>
