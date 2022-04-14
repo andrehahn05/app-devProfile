@@ -7,6 +7,9 @@ export type propsNavigationStack = {
   SignIn?: {
     name: string;
   };
+  SignUp?: {
+    name: string;
+  };
 };
 
 export type propsStack = NativeStackNavigationProp<propsNavigationStack>;

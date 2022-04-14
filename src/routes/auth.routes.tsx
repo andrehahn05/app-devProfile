@@ -4,11 +4,15 @@ import {propsNavigationStack} from './Models';
 
 const AuthStack = createNativeStackNavigator<propsNavigationStack>();
 import SignIn from '../screens/SignIn';
+import SignUp from '../screens/SignUp';
 
 const AuthRoutes: React.FC = () => {
   return (
-    <AuthStack.Navigator>
+    <AuthStack.Navigator
+      initialRouteName="SignIn"
+      screenOptions={{headerShown: false}}>
       <AuthStack.Screen name="SignIn" component={SignIn} />
+      <AuthStack.Screen name="SignUp" component={SignUp} />
     </AuthStack.Navigator>
   );
 };
