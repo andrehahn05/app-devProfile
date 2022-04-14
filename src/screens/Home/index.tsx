@@ -1,22 +1,38 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {
+  Container,
+  Header,
+  Icon,
+  UserAvatar,
+  UserAvatarButton,
+  UserGreeting,
+  UserInfo,
+  UserInfoDetail,
+  UserName,
+  UserWrapper,
+} from './styles';
+
+import avatarDefault from '../../assets/avatar02.png';
 
 const Home: React.FC = ({}) => {
   return (
-    <View style={styles.container}>
-      <Text style={{fontSize: 40, color: '#fff'}}>Home</Text>
-    </View>
+    <Container>
+      <Header>
+        <UserWrapper>
+          <UserInfo>
+            <UserAvatarButton onPress={() => {}}>
+              <UserAvatar source={avatarDefault} />
+            </UserAvatarButton>
+            <UserInfoDetail>
+              <UserGreeting>Olá,</UserGreeting>
+              <UserName>André</UserName>
+            </UserInfoDetail>
+          </UserInfo>
+          <Icon name="power" />
+        </UserWrapper>
+      </Header>
+    </Container>
   );
 };
 
 export default Home;
-
-export const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    width: '100%',
-    backgroundColor: '#2e2e2e',
-    justifyContent: 'center',
-    alignSelf: 'center',
-  },
-});
