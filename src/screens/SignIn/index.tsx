@@ -1,24 +1,24 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {ScrollView} from 'react-native';
+import Input from '../../components/Form/Input';
+import {Container, Content, Title} from './styles';
 
 export interface ISignInProps {}
 
 const SignIn: React.FC<ISignInProps> = ({}) => {
   return (
-    <View style={styles.container}>
-      <Text style={{fontSize: 40, color: '#fff'}}>SignIn</Text>
-    </View>
+    <ScrollView
+      keyboardShouldPersistTaps="handled"
+      contentContainerStyle={{flex: 1}}>
+      <Container>
+        <Content>
+          <Title>Faça seu logon</Title>
+          <Input placeholder="Email" />
+          <Input placeholder="Senha" />
+        </Content>
+      </Container>
+    </ScrollView>
   );
 };
 
 export default SignIn;
-
-export const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    width: '100%',
-    backgroundColor: '#2e2e2e',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
