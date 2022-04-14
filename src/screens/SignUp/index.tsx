@@ -1,27 +1,25 @@
 import React from 'react';
-import {ScrollView} from 'react-native';
-import Button from '../../components/Form/Button';
+import {Button, ScrollView} from 'react-native';
 import Input from '../../components/Form/Input';
 import {Container, Content, Title} from './styles';
 
-export interface ISignInProps {}
-
-const SignIn: React.FC<ISignInProps> = ({}) => {
+const SignUp: React.FC = ({}) => {
   return (
     <ScrollView
       keyboardShouldPersistTaps="handled"
       contentContainerStyle={{flex: 1}}>
       <Container>
         <Content>
-          <Title>Informe seus Dados</Title>
+          <Title>Crie sua conta</Title>
+          <Input placeholder="Nome completo" />
           <Input placeholder="Email" />
           <Input placeholder="Senha" />
 
-          <Button title="Entrar" />
+          <Button title="Criar conta" />
         </Content>
       </Container>
     </ScrollView>
   );
 };
 
-export default SignIn;
+export default SignUp;
