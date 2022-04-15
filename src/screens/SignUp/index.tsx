@@ -1,24 +1,42 @@
 import React from 'react';
-import {Button, ScrollView} from 'react-native';
+import {KeyboardAvoidingView, ScrollView} from 'react-native';
 import Input from '../../components/Form/Input';
-import {Container, Content, Title} from './styles';
+import Button from '../../components/Form/Button';
+import {
+  BackToSignIn,
+  BackToSignInTitle,
+  Container,
+  Content,
+  Icon,
+  Logo,
+  Title,
+} from './styles';
+import logo from '../../assets/logo.png';
+import {propsStack} from '../../routes/Models';
+import {useNavigation} from '@react-navigation/native';
 
 const SignUp: React.FC = ({}) => {
+  const navigation = useNavigation<propsStack>();
   return (
-    <ScrollView
-      keyboardShouldPersistTaps="handled"
-      contentContainerStyle={{flex: 1}}>
-      <Container>
-        <Content>
-          <Title>Crie sua conta</Title>
-          <Input placeholder="Nome completo" />
-          <Input placeholder="Email" />
-          <Input placeholder="Senha" />
+    <Container>
+      <KeyboardAvoidingView enabled style={{flex: 1}}>
+        <ScrollView>
+          <Content>
+            <Logo source={logo} />
+            <Title>Crie sua conta</Title>
+            <Input placeholder="Nome completo" />
+            <Input placeholder="Email" />
+            <Input placeholder="Senha" />
 
-          <Button title="Criar conta" />
-        </Content>
-      </Container>
-    </ScrollView>
+            <Button title="Registrar" />
+          </Content>
+        </ScrollView>
+      </KeyboardAvoidingView>
+      <BackToSignIn onPress={() => navigation.goBack()}>
+        <Icon name="arrow-left" />
+        <BackToSignInTitle>Voltar para logIn</BackToSignInTitle>
+      </BackToSignIn>
+    </Container>
   );
 };
 

@@ -1,38 +1,47 @@
 import React from 'react';
-import {ScrollView} from 'react-native';
+import {KeyboardAvoidingView, ScrollView} from 'react-native';
 import Button from '../../components/Form/Button';
 import Input from '../../components/Form/Input';
 import {
   Container,
   Content,
+  CreateAccount,
+  CreateAccountTitle,
   ForgotPasswordButton,
   ForgotPasswordTitle,
+  Icon,
   Logo,
   Title,
 } from './styles';
 import logo from '../../assets/logo.png';
+import {useNavigation} from '@react-navigation/native';
+import {propsStack} from '../../routes/Models';
 
-export interface ISignInProps {}
-
-const SignIn: React.FC<ISignInProps> = ({}) => {
+const SignIn: React.FC = ({}) => {
+  const navigation = useNavigation<propsStack>();
   return (
-    <ScrollView
-      keyboardShouldPersistTaps="handled"
-      contentContainerStyle={{flex: 1}}>
-      <Container>
-        <Content>
-          <Logo source={logo} />
-          <Title>Informe seus Dados</Title>
-          <Input placeholder="Email" />
-          <Input placeholder="Senha" />
+    <Container style={{flex: 1}}>
+      <KeyboardAvoidingView>
+        <ScrollView>
+          <Content>
+            <Logo source={logo} />
+            <Title>Informe seus Dados</Title>
 
-          <Button title="Entrar" />
-          <ForgotPasswordButton>
-            <ForgotPasswordTitle>Esqueci minha senha</ForgotPasswordTitle>
-          </ForgotPasswordButton>
-        </Content>
-      </Container>
-    </ScrollView>
+            <Input placeholder="Email" />
+            <Input placeholder="Senha" />
+
+            <Button title="Entrar" />
+            <ForgotPasswordButton>
+              <ForgotPasswordTitle>Esqueci minha senha</ForgotPasswordTitle>
+            </ForgotPasswordButton>
+          </Content>
+        </ScrollView>
+      </KeyboardAvoidingView>
+      <CreateAccount onPress={() => navigation.navigate('SignUp')}>
+        <Icon name="log-in" />
+        <CreateAccountTitle>Criar uma conta</CreateAccountTitle>
+      </CreateAccount>
+    </Container>
   );
 };
 
