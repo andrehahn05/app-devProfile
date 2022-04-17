@@ -1,10 +1,10 @@
 import styled from 'styled-components/native';
-import {RFValue} from 'react-native-responsive-fontsize';
+import { RFValue } from 'react-native-responsive-fontsize';
 import Feather from 'react-native-vector-icons/Feather';
 
 export const Container = styled.View`
   flex: 1;
-  background-color: ${({theme}) => theme.colors.dark};
+  background-color: ${({ theme }) => theme.colors.dark};
 `;
 
 export const Content = styled.View`
@@ -17,7 +17,7 @@ export const Content = styled.View`
 
 export const Title = styled.Text`
   font-size: ${RFValue(20)}px;
-  color: ${({theme}) => theme.colors.light};
+  color: ${({ theme }) => theme.colors.light};
   margin-bottom: 20px;
 `;
 
@@ -34,7 +34,7 @@ export const ForgotPasswordButton = styled.TouchableOpacity`
 export const ForgotPasswordTitle = styled.Text`
   font-size: ${RFValue(18)}px;
   font-weight: 600;
-  color: ${({theme}) => theme.colors.gray500};
+  color: ${({ theme }) => theme.colors.gray500};
   position: absolute;
   align-items: center;
   align-self: center;
@@ -43,7 +43,7 @@ export const ForgotPasswordTitle = styled.Text`
 
 export const Icon = styled(Feather)`
   font-size: ${RFValue(20)}px;
-  color: ${({theme}) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.primary};
 `;
 
 export const CreateAccount = styled.TouchableOpacity`
@@ -51,9 +51,9 @@ export const CreateAccount = styled.TouchableOpacity`
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: ${({theme}) => theme.colors.gray800};
+  background-color: ${({ theme }) => theme.colors.gray800};
   border-top-width: 1px;
-  border-color: ${({theme}) => theme.colors.black};
+  border-color: ${({ theme }) => theme.colors.black};
   padding: 16px 0;
   justify-content: center;
   align-items: center;
@@ -63,6 +63,6 @@ export const CreateAccount = styled.TouchableOpacity`
 export const CreateAccountTitle = styled.Text`
   font-size: ${RFValue(18)}px;
   font-weight: 600;
-  color: ${({theme}) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.primary};
   margin-left: 16px;
 `;

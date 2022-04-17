@@ -1,9 +1,9 @@
 import React from 'react';
-import {TextInputProps} from 'react-native';
+import { TextInputProps } from 'react-native';
 import theme from '../../../global/styles/theme';
-import {Container} from './styles';
+import { Container } from './styles';
 
-const Input: React.FC<TextInputProps> = ({...otherProps}) => {
+const Input: React.FC<TextInputProps> = ({ ...otherProps }) => {
   return (
     <Container placeholderTextColor={theme.colors.gray500} {...otherProps} />
   );

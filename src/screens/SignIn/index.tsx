@@ -1,7 +1,7 @@
 import React from 'react';
-import {KeyboardAvoidingView, ScrollView} from 'react-native';
+import { KeyboardAvoidingView, ScrollView } from 'react-native';
 import Button from '../../components/Form/Button';
-import {useForm, FieldValues} from 'react-hook-form';
+import { useForm, FieldValues } from 'react-hook-form';
 
 import {
   Container,
@@ -16,15 +16,15 @@ import {
 } from './styles';
 import logo from '../../assets/logo.png';
 import InputControl from '../../components/Form/InputControl';
-import {useNavigation} from '@react-navigation/native';
-import {propsStack} from '../../routes/Models';
+import { useNavigation } from '@react-navigation/native';
+import { propsStack } from '../../routes/Models';
 
 interface IFormInputs {
   [name: string]: any;
 }
 
 const SignIn: React.FC = () => {
-  const {handleSubmit, control} = useForm<FieldValues>();
+  const { handleSubmit, control } = useForm<FieldValues>();
   const navigation = useNavigation<propsStack>();
 
   const handleSignIn = (form: IFormInputs) => {
@@ -37,7 +37,7 @@ const SignIn: React.FC = () => {
   };
 
   return (
-    <Container style={{flex: 1}}>
+    <Container style={{ flex: 1 }}>
       <KeyboardAvoidingView>
         <ScrollView>
           <Content>
