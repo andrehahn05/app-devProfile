@@ -2,7 +2,8 @@ import React from 'react';
 import { KeyboardAvoidingView, ScrollView } from 'react-native';
 import Button from '../../components/Form/Button';
 import { useForm, FieldValues } from 'react-hook-form';
-
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 import {
   Container,
   Content,
@@ -23,8 +24,19 @@ interface IFormInputs {
   [name: string]: any;
 }
 
+const formSchema = yup.object({
+  email: yup.string().email('Email inválido.').required('Informe o email.'),
+  password: yup.string().required('Informe a senha.'),
+});
+
 const SignIn: React.FC = () => {
-  const { handleSubmit, control } = useForm<FieldValues>();
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm<FieldValues>({
+    resolver: yupResolver(formSchema),
+  });
   const navigation = useNavigation<propsStack>();
 
   const handleSignIn = (form: IFormInputs) => {
@@ -51,6 +63,7 @@ const SignIn: React.FC = () => {
               name="email"
               placeholder="Email"
               keyboardType="email-address"
+              error={errors.email && errors.email.message}
             />
             <InputControl
               control={control}
@@ -58,10 +71,10 @@ const SignIn: React.FC = () => {
               placeholder="Senha"
               autoCorrect={false}
               secureTextEntry
+              error={errors.password && errors.password.message}
             />
 
             <Button title="Entrar" onPress={handleSubmit(handleSignIn)} />
-
             <ForgotPasswordButton>
               <ForgotPasswordTitle>Esqueci minha senha</ForgotPasswordTitle>
             </ForgotPasswordButton>
