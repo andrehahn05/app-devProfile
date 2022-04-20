@@ -1,10 +1,11 @@
 import React from 'react';
-import { KeyboardAvoidingView, ScrollView } from 'react-native';
+import { Alert, KeyboardAvoidingView, ScrollView } from 'react-native';
 import InputControl from '../../components/Form/InputControl';
 import Button from '../../components/Form/Button';
 import { useForm, FieldValues } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { api } from '../../services/api';
 import {
   BackToSignIn,
   BackToSignInTitle,
@@ -37,14 +38,25 @@ const SignUp: React.FC = () => {
   });
   const navigation = useNavigation<propsStack>();
 
-  const handleSignUp = (form: IFormInputs) => {
+  const handleSignUp = async (form: IFormInputs) => {
     const data = {
       name: form.name,
       email: form.email,
       password: form.password,
     };
 
-    console.log(data);
+    try {
+      await api.post('users', data);
+      Alert.alert(
+        'Cadastro realizado com sucesso !!!',
+        'Efetue o seu Login ...',
+      );
+    } catch {
+      Alert.alert(
+        'Erro no cadastro',
+        'Ocorreu um erro ao fazer o cadastro. Tente novamente.',
+      );
+    }
   };
 
   return (
@@ -80,13 +92,13 @@ const SignUp: React.FC = () => {
               error={errors.password && errors.password.message}
             />
 
-            <Button title="Entrar" onPress={handleSubmit(handleSignUp)} />
+            <Button title="Cadastrar" onPress={handleSubmit(handleSignUp)} />
           </Content>
         </ScrollView>
       </KeyboardAvoidingView>
       <BackToSignIn onPress={() => navigation.goBack()}>
         <Icon name="arrow-left" />
-        <BackToSignInTitle>Voltar para logIn</BackToSignInTitle>
+        <BackToSignInTitle>Voltar para login</BackToSignInTitle>
       </BackToSignIn>
     </Container>
   );
